@@ -177,7 +177,7 @@
     // Tạo nút "LẤY MÃ" ban đầu
     container.innerHTML = `
         <span id="${buttonId}" class="custom-button-${CONTAINER_ID}">
-            <img src="https://trafficuser.vn/wp-content/uploads/2025/11/icon-x64.png" alt="icon">
+            <img src="https://github.com/traffic-user/trafficuser/blob/main/logo-64x.png?raw=true" alt="icon">
             <span id="${textId}">LẤY MÃ</span>
         </span>
     `;
@@ -652,4 +652,5 @@
     // *** Kết thúc Hàm detectIncognito ***
 
 })();
+
 
