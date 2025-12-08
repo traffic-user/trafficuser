@@ -1,6 +1,6 @@
 (function() {
     // Cấu hình chung
-    const CONTAINER_ID = 'Trafficuser';
+    const CONTAINER_ID = 'trafficuser';
     const PASS_CODE = '123@789';
 
     let seconds = 70;
@@ -652,3 +652,4 @@
     // *** Kết thúc Hàm detectIncognito ***
 
 })();
+
