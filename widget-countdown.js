@@ -177,7 +177,7 @@
     // Tạo nút "LẤY MÃ" ban đầu
     container.innerHTML = `
         <span id="${buttonId}" class="custom-button-${CONTAINER_ID}">
-            <img src="https://github.com/traffic-user/trafficuser/blob/main/logo-64x.png?raw=true" alt="icon">
+            <img src="https://raw.githack.com/traffic-user/trafficuser/refs/heads/main/logo-64x.png" alt="icon">
             <span id="${textId}">LẤY MÃ</span>
         </span>
     `;
@@ -652,5 +652,6 @@
     // *** Kết thúc Hàm detectIncognito ***
 
 })();
+
 
 
