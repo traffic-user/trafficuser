@@ -226,7 +226,7 @@
             btn.classList.remove('paused-state'); // Xóa trạng thái dừng
             btn.style.cursor = 'pointer';
 
-            btnText.innerHTML = `Mã KM: ${PASS_CODE} <img src="https://trafficuser.vn/wp-content/uploads/2025/12/icon-copy.png" alt="Copy" style="height: 14px !important; margin: -5px 0 0 3px !important; vertical-align: middle; display: inline-block; width:auto !important;">`;
+            btnText.innerHTML = `Mã KM: ${PASS_CODE} <img src="https://raw.githack.com/traffic-user/trafficuser/refs/heads/main/icon-copy.png" alt="Copy" style="height: 14px !important; margin: -5px 0 0 3px !important; vertical-align: middle; display: inline-block; width:auto !important;">`;
 
             // Thay thế sự kiện click
             btn.removeEventListener('click', checkIncognitoAndStart);
@@ -652,6 +652,7 @@
     // *** Kết thúc Hàm detectIncognito ***
 
 })();
+
 
 
 
