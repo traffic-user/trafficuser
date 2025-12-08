@@ -1,6 +1,6 @@
 (function() {
     // Cấu hình chung
-    const CONTAINER_ID = '3nzmTV';
+    const CONTAINER_ID = 'Trafficuser';
     const PASS_CODE = '123@789';
 
     let seconds = 70;
@@ -650,4 +650,5 @@
 		});
 	};
     // *** Kết thúc Hàm detectIncognito ***
+
 })();
