@@ -178,6 +178,7 @@
     container.innerHTML = `
         <span id="${buttonId}" class="custom-button-${CONTAINER_ID}">
             <img src="https://trafficuser.vn/wp-content/uploads/2026/05/logo-64x-qua.png" alt="icon">
+			style="width: 75px; height: auto; vertical-align: middle; margin-right: 8px;">
             <span id="${textId}">LẤY MÃ</span>
         </span>
     `;
