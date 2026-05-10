@@ -82,7 +82,7 @@
             background: ${BASE_COLOR};
             border: 2px solid #fff;
             color: #fff;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 14px;
             border-radius: 7px;
             padding: 5px 10px;
@@ -109,7 +109,7 @@
         }
         .custom-button-${CONTAINER_ID} span {
             color: #fff;
-            font-weight: 700;
+            font-weight: 600;
         }
         /* Styles cho thông báo copy */
         #copy-alert-${CONTAINER_ID} {
