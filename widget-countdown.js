@@ -104,7 +104,7 @@
         .custom-button-${CONTAINER_ID} img {
             height: 90px;
             margin-right: 5px;
-            display: inline-flex;
+            display: inline-block;
             align-items: center;
             width: auto;
         }
