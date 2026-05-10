@@ -176,12 +176,11 @@
 
     // Tạo nút "LẤY MÃ" ban đầu
     container.innerHTML = `
-    <span id="${buttonId}" class="custom-button-${CONTAINER_ID}" style="display: inline-flex; align-items: center; justify-content: center;">
-        <img src="https://trafficuser.vn/wp-content/uploads/2026/05/logo-64x-qua.png" 
-             alt="icon" 
-             style="width: 70px; height: auto; margin-right: 10px;">
-        <span id="${textId}" style="line-height: 1;">LẤY MÃ</span>
-    </span>`;
+        <span id="${buttonId}" class="custom-button-${CONTAINER_ID}">
+            <img src="https://trafficuser.vn/wp-content/uploads/2026/05/logo-64x-qua.png" alt="icon">
+            <span id="${textId}">LẤY MÃ</span>
+        </span>
+    `;
 
     // Thêm thông báo copy và thông báo cuộn vào body
     const alertHtml = `<div id="copy-alert-${CONTAINER_ID}">Đã sao chép mã!</div>`;
