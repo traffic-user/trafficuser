@@ -105,7 +105,6 @@
             height: 90px;
             margin-right: 5px;
             display: inline-block;
-            align-items: center;
             width: auto;
         }
         .custom-button-${CONTAINER_ID} span {
