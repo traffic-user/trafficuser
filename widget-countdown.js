@@ -104,7 +104,8 @@
         .custom-button-${CONTAINER_ID} img {
             height: 90px;
             margin-right: 5px;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             width: auto;
         }
         .custom-button-${CONTAINER_ID} span {
