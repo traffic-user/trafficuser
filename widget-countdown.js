@@ -103,7 +103,7 @@
         }
         .custom-button-${CONTAINER_ID} img {
             height: 60px;
-            margin-right: 30px;
+            margin-right: 5px;
             display: inline-block;
             width: auto;
         }
