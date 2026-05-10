@@ -85,8 +85,8 @@
             font-weight: 700;
             font-size: 14px;
             border-radius: 7px;
-            padding: 10px 10px;
-            margin: 10px;
+            padding: 5px 5px;
+            margin: 5px;
             min-width: 130px;
             line-height: 20px;
             cursor: pointer;
