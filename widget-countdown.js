@@ -94,7 +94,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            z-index: 10;
+            z-index: 0;
             user-select: none;
             transition: none;
         }
