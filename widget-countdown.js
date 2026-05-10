@@ -102,8 +102,8 @@
             cursor: not-allowed;
         }
         .custom-button-${CONTAINER_ID} img {
-            height: 20px;
-            margin-right: 10px;
+            height: 60px;
+            margin-right: 30px;
             display: inline-block;
             width: auto;
         }
