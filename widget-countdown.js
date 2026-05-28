@@ -108,7 +108,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             padding: 15px 25px;
-            background: rgba(255, 0, 0, 0.95); /* Tăng nhẹ độ trong suốt nền đỏ */
+            background: rgba(255, 0, 0, 0.95);
             color: yellow;
             font-weight: 700;
             font-size: 16px;
