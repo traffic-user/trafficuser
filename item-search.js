@@ -83,8 +83,8 @@
             content: '';
             position: absolute;
             top: 0;
-            left: -150%;
-            width: 100%;
+            left: -100%;
+            width: 20%;
             height: 100%;
             background: linear-gradient(
                 90deg,
