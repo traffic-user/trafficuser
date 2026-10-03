@@ -84,7 +84,7 @@
             position: absolute;
             top: 0;
             left: -150%;
-            width: 50%;
+            width: 100%;
             height: 100%;
             background: linear-gradient(
                 90deg,
@@ -92,7 +92,7 @@
                 rgba(255, 255, 255, 0.35),
                 transparent
             );
-            animation: shimmer-${CONTAINER_ID} 3.5s infinite linear;
+            animation: shimmer-${CONTAINER_ID} 5s infinite linear;
         }
 
         @keyframes shimmer-${CONTAINER_ID} {
