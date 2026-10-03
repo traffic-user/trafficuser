@@ -92,7 +92,7 @@
                 rgba(255, 255, 255, 0.35),
                 transparent
             );
-            animation: shimmer-${CONTAINER_ID} 5s infinite linear;
+            animation: shimmer-${CONTAINER_ID} 15s infinite linear;
         }
 
         @keyframes shimmer-${CONTAINER_ID} {
