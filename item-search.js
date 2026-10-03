@@ -80,13 +80,13 @@
             position: relative;
             overflow: hidden; /* QUAN TRỌNG: Giúp vệt sáng chỉ nằm gọn trong nút, không bị tràn ra ngoài */
         }
-		/* HIỆU ỨNG ÁNH SÁNG CHẠY GỌN GÀNG TRONG NÚT */
+		/* HIỆU ỨNG ÁNH SÁNG BẢN LỚN, CHẠY ĐỀU VÀ MƯỢT MÀ */
         .custom-button-${CONTAINER_ID}::after {
             content: '';
             position: absolute;
             top: 0;
             left: -150%;
-            width: 100%;
+            width: 50%;
             height: 100%;
             background: linear-gradient(
                 90deg,
@@ -99,10 +99,10 @@
 
         @keyframes shimmer-${CONTAINER_ID} {
             0% {
-                left: -150%;
+                left: -100%;
             }
             100% {
-                left: 150%;
+                left: 100%;
             }
         }
         .custom-button-${CONTAINER_ID}.disabled-state {
