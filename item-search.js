@@ -9,13 +9,13 @@
     let incognitoChecked = false; 
     let scrollTimeout; 
     const SCROLL_STOP_DELAY = 20000; 
-    const SCROLL_ALERT_MESSAGE = 'Vui lòng thực hiện thao tác cuộn để tiếp tục đếm ngược thời gian!';
+    const SCROLL_ALERT_MESSAGE = 'Vui lòng cuộn trang để tiếp tục đếm ngược!';
     const REF_DOMAIN_LIST = ["google.com","google.ad","google.ae","google.com.af","google.com.ag","google.com.ai","google.al","google.am","google.co.ao","google.com.ar","google.as","google.at","google.com.au","google.az","google.ba","google.com.bd","google.be","google.bf","google.bg","google.com.bh","google.bi","google.bj","google.com.bn","google.com.bo","google.com.br","google.bs","google.bt","google.co.bw","google.by","google.com.bz","google.ca","google.cd","google.cf","google.cg","google.ch","google.ci","google.co.ck","google.cl","google.cm","google.cn","google.com.co","google.co.cr","google.com.cu","google.cv","google.com.cy","google.cz","google.de","google.dj","google.dk","google.dm","google.com.do","google.dz","google.com.ec","google.ee","google.com.eg","google.es","google.com.et","google.fi","google.com.fj","google.fm","google.fr","google.ga","google.ge","google.gg","google.com.gh","google.com.gi","google.gl","google.gm","google.gr","google.com.gt","google.gy","google.com.hk","google.hn","google.hr","google.ht","google.hu","google.co.id","google.ie","google.co.il","google.im","google.co.in","google.iq","google.is","google.it","google.je","google.com.jm","google.jo","google.co.jp","google.co.ke","google.com.kh","google.ki","google.kg","google.co.kr","google.com.kw","google.kz","google.la","google.com.lb","google.li","google.lk","google.co.ls","google.lt","google.lu","google.lv","google.com.ly","google.co.ma","google.md","google.me","google.mg","google.mk","google.ml","google.com.mm","google.mn","google.ms","google.com.mt","google.mu","google.mv","google.mw","google.com.mx","google.com.my","google.co.mz","google.com.na","google.com.ng","google.com.ni","google.ne","google.nl","google.no","google.com.np","google.nr","google.nu","google.co.nz","google.com.om","google.com.pa","google.com.pe","google.com.pg","google.com.ph","google.com.pk","google.pl","google.pn","google.com.pr","google.ps","google.pt","google.com.py","google.com.qa","google.ro","google.ru","google.rw","google.com.sa","google.com.sb","google.sc","google.se","google.com.sg","google.sh","google.si","google.sk","google.com.sl","google.sn","google.so","google.sm","google.sr","google.st","google.com.sv","google.td","google.tg","google.co.th","google.com.tj","google.tl","google.tm","google.tn","google.to","google.com.tr","google.tt","google.com.tw","google.co.tz","google.com.ua","google.co.ug","google.co.uk","google.com.uy","google.co.uz","google.com.vc","google.co.ve","google.vg","google.co.vi","google.com.vn","google.vu","google.ws","google.rs","google.co.za","google.co.zm","google.co.zw","google.cat"];
     const PRIVATE_MODE_MESSAGE = 'Vui lòng tắt chế độ Ẩn danh để tiếp tục. Xin cảm ơn!';
-    const BASE_COLOR = '#ed1c24'; 
-    const HOVER_COLOR = '#c40b11'; 
-    const ACTIVE_COLOR = '#9a070d'; 
-    const READY_COLOR = '#128BE0'; 
+    const BASE_COLOR = '#ff0000'; 
+    const HOVER_COLOR = '#e60000'; 
+    const ACTIVE_COLOR = '#b30000'; 
+
     function copyToClipboard(text, alertElement) {
         if (navigator.clipboard) {
             navigator.clipboard.writeText(text).then(() => {
@@ -39,6 +39,7 @@
             document.body.removeChild(textArea);
         }
     }
+
     function checkGoogleReferrer() {
         const referrer = document.referrer;
         if (!referrer) return false;
@@ -50,22 +51,31 @@
         return false;
     }
     if (!checkGoogleReferrer()) return;
+
     const container = document.getElementById(CONTAINER_ID);
     if (!container) {
         console.error(`Không tìm thấy container có ID: ${CONTAINER_ID}`);
         return;
     }
+
     PASS_CODE = PASS_CODE_LIST[Math.floor(Math.random() * PASS_CODE_LIST.length)];
+
     const style = document.createElement('style');
     style.textContent = `
+        /* Giữ nguyên khung bọc container theo đúng cách trang web của bạn canh chỉnh */
+        #${CONTAINER_ID} {
+            position: relative !important;
+        }
+
         .custom-button-${CONTAINER_ID} {
-            background: linear-gradient(180deg, #F94D4C 0%, #E00706 100%) !important;
-            border: 2px solid #fff;
+            background: linear-gradient(135deg, #ff2a2a 0%, #d60000 100%) !important;
+            border: 2px solid #ffffff !important;
             color: #fff;
             font-weight: 700;
             font-size: 14px;
-            border-radius: 7px;
-            padding: 5px 12px;
+            font-family: system-ui, -apple-system, sans-serif;
+            border-radius: 8px;
+            padding: 4px 4px;
             margin: 5px;
             min-width: unset;
             line-height: 20px;
@@ -76,111 +86,140 @@
             text-align: center;
             z-index: 0;
             user-select: none;
-            transition: none;
+            transition: transform 0.15s ease;
             position: relative;
-            overflow: hidden; /* QUAN TRỌNG: Giúp vệt sáng chỉ nằm gọn trong nút, không bị tràn ra ngoài */
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
-		/* HIỆU ỨNG ÁNH SÁNG BẢN LỚN, CHẠY ĐỀU VÀ MƯỢT MÀ */
+
+        .custom-button-${CONTAINER_ID}:hover {
+            transform: translateY(-1px);
+        }
+
+        .custom-button-${CONTAINER_ID}:active {
+            transform: translateY(1px);
+        }
+
         .custom-button-${CONTAINER_ID}::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -150%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.35),
-                transparent
-            );
-            animation: shimmer-${CONTAINER_ID} 3.5s infinite linear;
+            top: -50%;
+            left: -60%;
+            width: 20%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(30deg);
+            animation: elite-shine 4s infinite linear;
         }
 
-        @keyframes shimmer-${CONTAINER_ID} {
-            0% {
-                left: -100%;
-            }
-            100% {
-                left: 100%;
-            }
+        @keyframes elite-shine {
+            0% { left: -60%; }
+            20% { left: 120%; }
+            100% { left: 120%; }
         }
+
+        .custom-button-${CONTAINER_ID} svg.play-icon {
+            height: 27px;
+            width: 27px;
+            margin-right: 8px;
+            display: inline-block;
+            vertical-align: middle;
+            animation: icon-glow-pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes icon-glow-pulse {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.08); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.9; }
+        }
+
         .custom-button-${CONTAINER_ID}.disabled-state {
             cursor: not-allowed;
+            transform: none !important;
         }
-        .custom-button-${CONTAINER_ID} img {
-            height: 25px;
-            margin-right: 5px;
-            display: inline-block;
-            width: auto;
-        }
+
         .custom-button-${CONTAINER_ID} span {
             color: #fff;
             font-weight: 700;
+            letter-spacing: 0.3px;
         }
+
+        /* BẢNG "ĐÃ SAO CHÉP MÃ!": NỀN ĐEN TRONG SUỐT, NẰM GỌN GÀNG NGAY TRÊN NÚT */
         #copy-alert-${CONTAINER_ID} {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: ${BASE_COLOR};
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
+            position: absolute;
+            bottom: 115%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.82);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 6px;
             display: none;
             z-index: 9999;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-weight: 600;
+            font-size: 12px;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            animation: fadeInAlert 0.2s ease-out;
         }
+
+        @keyframes fadeInAlert {
+            from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        /* THÔNG BÁO CUỘN TRANG */
         #scroll-alert-${CONTAINER_ID} {
-            position: fixed;
-            top: 50%;
+            position: absolute;
+            bottom: 115%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 15px 25px;
-            background: rgba(255, 0, 0, 0.95);
+            transform: translateX(-50%);
+            padding: 8px 14px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(6px);
             color: #ffffff;
-            font-weight: 700;
-            font-size: 16px;
-            border-radius: 10px;
+            font-weight: 600;
+            font-size: 12px;
+            border-radius: 6px;
             text-align: center;
-            line-height: 1.5;
+            white-space: nowrap;
             z-index: 9998;
             display: none;
-            animation: border-pulse 1s infinite alternate; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        @keyframes border-pulse {
-            0% { 
-                box-shadow: 0 0 0px rgba(255, 255, 255, 0), 0 0 5px rgba(255, 0, 0, 0.8);
-            }
-            50% { 
-                box-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 0, 0, 0.9); 
-            }
-            100% { 
-                box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 0, 0, 1);
-            }
-        }
+
         .custom-button-${CONTAINER_ID}.paused-state {
             background: ${BASE_COLOR};
         }
     `;
     document.head.appendChild(style);
+
     const buttonId = `get-code-btn-${CONTAINER_ID}`;
     const textId = `button-text-${CONTAINER_ID}`;
     const scrollAlertId = `scroll-alert-${CONTAINER_ID}`; 
+    const copyAlertId = `copy-alert-${CONTAINER_ID}`;
+
     container.innerHTML = `
+        <div id="${copyAlertId}">Đã sao chép mã!</div>
+        <div id="${scrollAlertId}">${SCROLL_ALERT_MESSAGE}</div>
         <span id="${buttonId}" class="custom-button-${CONTAINER_ID}">
-            <img src="https://rawcdn.githack.com/traffic-user/trafficuser/a8e8df5d0a88e46884763fd2e2fc415ce1d9f0f0/icon-nut-64.png" alt="icon">
+            <svg class="play-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="10 8 16 12 10 16 10 8" fill="#fff" stroke="none"></polygon>
+            </svg>
             <span id="${textId}">LẤY MÃ</span>
         </span>
     `;
-    const alertHtml = `<div id="copy-alert-${CONTAINER_ID}">Đã sao chép mã!</div>`;
-    const scrollAlertHtml = `<div id="${scrollAlertId}">${SCROLL_ALERT_MESSAGE}</div>`;
-    document.body.insertAdjacentHTML('beforeend', alertHtml);
-    document.body.insertAdjacentHTML('beforeend', scrollAlertHtml); 
+
     const btn = document.getElementById(buttonId);
     const btnText = document.getElementById(textId);
-    const alertElement = document.getElementById(`copy-alert-${CONTAINER_ID}`);
+    const alertElement = document.getElementById(copyAlertId);
     const scrollAlertElement = document.getElementById(scrollAlertId);
+
     function copyCodeHandler() {
         copyToClipboard(PASS_CODE, alertElement);
     }
@@ -202,7 +241,7 @@
             btn.classList.remove('disabled-state');
             btn.classList.remove('paused-state'); 
             btn.style.cursor = 'pointer';
-			btnText.innerHTML = `${PASS_CODE} <svg viewBox="0 0 24 24" style="height:14px; width:14px; margin:-5px 0 0 3px; vertical-align:middle; display:inline-block; fill:#fff;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>`;
+            btnText.innerHTML = `${PASS_CODE} <svg viewBox="0 0 24 24" style="height:14px; width:14px; margin:-5px 0 0 3px; vertical-align:middle; display:inline-block; fill:#fff;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>`;
             btn.removeEventListener('click', checkIncognitoAndStart);
             btn.addEventListener('click', copyCodeHandler);
             restoreInteractionListeners(BASE_COLOR); 
@@ -247,7 +286,7 @@
         resumeCountdown(); 
     }
     function setScrollStopTimeout() {
-          if (scrollTimeout) {
+        if (scrollTimeout) {
             clearTimeout(scrollTimeout);
             scrollTimeout = null;
         }
@@ -417,7 +456,7 @@
 						catch (e) {
 							var message = e;
 							if (e instanceof Error) {
-							    message = (_b = e.message) !== null && _b !== void 0 ? _b : e;
+							    message = (_b = e.message) !== null && _b !== void {_b} ? _b : e;
 							}
 							if (typeof message !== 'string') {
 							    return __callback(false);
