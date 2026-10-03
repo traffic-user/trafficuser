@@ -65,9 +65,9 @@
             font-weight: 700;
             font-size: 14px;
             border-radius: 7px;
-            padding: 5px 5px;
+            padding: 5px 12px;
             margin: 5px;
-            min-width: 130px;
+            min-width: unset;
             line-height: 20px;
             cursor: pointer;
             display: inline-flex;
