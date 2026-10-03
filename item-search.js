@@ -59,7 +59,7 @@
     const style = document.createElement('style');
     style.textContent = `
         .custom-button-${CONTAINER_ID} {
-            background: ${BASE_COLOR};
+            background: linear-gradient(180deg, #F94D4C 0%, #E00706 100%) !important;
             border: 2px solid #fff;
             color: #fff;
             font-weight: 700;
@@ -77,6 +77,31 @@
             z-index: 0;
             user-select: none;
             transition: none;
+        }
+		/* HIỆU ỨNG ÁNH SÁNG BẢN LỚN, CHẠY ĐỀU VÀ MƯỢT MÀ */
+        .custom-button-${CONTAINER_ID}::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.35),
+                transparent
+            );
+            animation: shimmer-${CONTAINER_ID} 3.5s infinite linear;
+        }
+
+        @keyframes shimmer-${CONTAINER_ID} {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
         }
         .custom-button-${CONTAINER_ID}.disabled-state {
             cursor: not-allowed;
