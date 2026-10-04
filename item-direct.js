@@ -39,6 +39,7 @@
         }
     }
 
+   
 
     const container = document.getElementById(CONTAINER_ID);
     if (!container) {
@@ -56,7 +57,7 @@
         }
 
         .custom-button-${CONTAINER_ID} {
-            background: linear-gradient(135deg, #ff2a2a 0%, #d60000 100%) !important;
+            background: linear-gradient(90deg, #ff2a2a 0%, #d60000 100%) !important;
             border: 2px solid #ffffff !important;
             color: #fff;
             font-weight: 700;
