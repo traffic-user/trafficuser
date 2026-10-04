@@ -104,18 +104,24 @@
             content: '';
             position: absolute;
             top: -50%;
-            left: -60%;
-            width: 20%;
+            left: -80%;
+            width: 40%;
             height: 200%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(30deg);
-            animation: elite-shine 4s infinite linear;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.7),
+                rgba(255, 255, 255, 0.1),
+                transparent
+            ) !important;
+            transform: rotate(25deg);
+            animation: elite-shine 1.8s infinite cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
 
         @keyframes elite-shine {
-            0% { left: -60%; }
-            20% { left: 120%; }
-            100% { left: 120%; }
+            0% { left: -80%; }
+            100% { left: 130%; }
         }
 
         .custom-button-${CONTAINER_ID} svg.play-icon {
@@ -144,7 +150,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* BẢNG "ĐÃ SAO CHÉP MÃ!": NỀN ĐEN TRONG SUỐT, NẰM GỌN GÀNG NGAY TRÊN NÚT */
+        
         #copy-alert-${CONTAINER_ID} {
             position: absolute;
             bottom: 115%;
